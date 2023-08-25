@@ -13,7 +13,7 @@ class Blocks extends BootLoadClass
 	public function registerBlockTypes(): void
 	{
 		if (!defined('MOTION_FOR_WP_DIR')) return;
-		$gutenbergBuildDir = MOTION_FOR_WP_DIR . '/dist/blocks';
+		$gutenbergBuildDir = MOTION_FOR_WP_DIR . 'dist/blocks';
 		$gutenbergBuildDirChildren = scandir($gutenbergBuildDir);
 		$gutenbergBuildDirChildren = array_filter($gutenbergBuildDirChildren, function ($child) {
 			return $child !== '.' && $child !== '..';
