@@ -1,3 +1,3 @@
-import {motionHooks} from "./hooks/hooks";
+import { motionHooks } from './hooks/hooks';
 
 motionHooks().register();

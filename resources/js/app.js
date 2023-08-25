@@ -1,5 +1,5 @@
-import {InViewManager} from "./components/InViewManager";
+import { InViewManager } from './components/InViewManager';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener( 'DOMContentLoaded', () => {
 	InViewManager().init();
-})
+} );

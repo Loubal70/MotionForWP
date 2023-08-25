@@ -1,15 +1,15 @@
 {
-    "name": "denisdums/motion-for-wp",
-    "autoload": {
-        "psr-4": {
-            "MotionForWP\\": "classes/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Denis Dumont",
-            "email": "denis.dumont09@gmail.com"
-        }
-    ],
-    "require": {}
+	"name": "denisdums/motion-for-wp",
+	"autoload": {
+		"psr-4": {
+			"MotionForWP\\": "classes/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Denis Dumont",
+			"email": "denis.dumont09@gmail.com"
+		}
+	],
+	"require": {}
 }
