@@ -43,7 +43,8 @@ var _wp$components = wp.components,
   ButtonGroup = _wp$components.ButtonGroup,
   ComboboxControl = _wp$components.ComboboxControl,
   PanelBody = _wp$components.PanelBody,
-  TextControl = _wp$components.TextControl;
+  TextControl = _wp$components.TextControl,
+  ToggleControl = _wp$components.ToggleControl;
 function motionHooks() {
   return {
     namespace: 'motion-for-wp',
@@ -83,6 +84,10 @@ function motionHooks() {
         margin: {
           type: 'string',
           "default": '0'
+        },
+        resetScroll: {
+          type: 'boolean',
+          "default": false
         }
       });
       return settings;
@@ -134,14 +139,16 @@ function motionHooks() {
               duration = attributes.duration,
               delay = attributes.delay,
               easing = attributes.easing,
-              margin = attributes.margin;
+              margin = attributes.margin,
+              resetScroll = attributes.resetScroll;
             var handleReset = function handleReset() {
               setAttributes({
                 motion: 'none',
                 duration: undefined,
                 delay: undefined,
                 easing: 'ease-out',
-                margin: undefined
+                margin: undefined,
+                resetScroll: false
               });
             };
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Fragment, {
@@ -203,6 +210,15 @@ function motionHooks() {
                         margin: value
                       });
                     }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ToggleControl, {
+                    label: __('Enable reset on scroll', 'motion-for-wp'),
+                    help: __('Enable this to reset the motion when the element is scrolled out of view and back in.', 'motion-for-wp'),
+                    checked: resetScroll,
+                    onChange: function onChange(value) {
+                      return setAttributes({
+                        resetScroll: value
+                      });
+                    }
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonGroup, {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, {
                       onClick: function onClick() {
@@ -227,6 +243,7 @@ function motionHooks() {
         delete props['data-motion-delay'];
         delete props['data-motion-easing'];
         delete props['data-motion-margin'];
+        delete props['data-motion-resetScroll'];
       } else {
         props['data-motion'] = true;
         props['data-motion-animation'] = attributes.motion;
@@ -249,6 +266,11 @@ function motionHooks() {
           props['data-motion-margin'] = attributes.margin;
         } else {
           delete props['data-motion-margin'];
+        }
+        if (attributes.resetScroll !== false) {
+          props['data-motion-resetScroll'] = attributes.resetScroll;
+        } else {
+          delete props['data-motion-resetScroll'];
         }
       }
       return props;

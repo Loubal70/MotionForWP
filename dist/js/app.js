@@ -1854,7 +1854,8 @@ var MotionTarget = /*#__PURE__*/function () {
       return {
         duration: this.getDuration(),
         easing: this.getEasing(),
-        delay: this.getDelay()
+        delay: this.getDelay(),
+        resetScroll: this.getResetScroll()
       };
     }
   }, {
@@ -1876,6 +1877,12 @@ var MotionTarget = /*#__PURE__*/function () {
       var easingSlug = this.element.getAttribute('data-motion-easing');
       if (!motionForWPEasings[easingSlug]) return (_motionForWPOptions$e = motionForWPOptions.easing) !== null && _motionForWPOptions$e !== void 0 ? _motionForWPOptions$e : 'ease-in-out';
       return motionForWPEasings[easingSlug].property;
+    }
+  }, {
+    key: "getResetScroll",
+    value: function getResetScroll() {
+      var _ref3, _this$element$getAttr3;
+      return (_ref3 = (_this$element$getAttr3 = this.element.getAttribute('data-motion-resetScroll')) !== null && _this$element$getAttr3 !== void 0 ? _this$element$getAttr3 : motionForWPOptions.resetScroll) !== null && _ref3 !== void 0 ? _ref3 : false;
     }
   }]);
   return MotionTarget;
